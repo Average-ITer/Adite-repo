@@ -11,7 +11,7 @@
 #>
 
 # Aantal dagen uptime waarna een reboot nodig is
-$maxUptimeDays = 7
+$maxUptimeDays = 1
 
 # Haal de uptime van het device op
 $os = Get-WmiObject Win32_OperatingSystem
@@ -20,11 +20,11 @@ $uptime = (Get-Date) - $lastBootUpTime
 
 # Controleer of de uptime langer is dan $maxUptimeDays
 if ($uptime.TotalDays -gt $maxUptimeDays) {
-    Write-Host "Uptime is langer dan $maxUptimeDays dagen. Reboot wordt gepland over 15 minuten..."
+    Write-Host "Uptime is langer dan $maxUptimeDays dagen. Herstart wordt uitgevoerd over 15 minuten..."
 
     # Toon een melding aan de gebruiker
     $wshell = New-Object -ComObject WScript.Shell
-    $wshell.Popup("Uw device wordt over 15 minuten herstart om de prestaties te optimaliseren. Sla uw werk op en sluit uw programma's.", 0, "Geplande Reboot", 0x40)
+    $wshell.Popup("Uw toestel wordt over 15 minuten herstart om de prestaties te optimaliseren. Sla uw werk op en sluit uw programma's.", 0, "Geplande Reboot", 0x40)
 
     # Wacht 15 minuten (900 seconden)
     Start-Sleep -Seconds 900
