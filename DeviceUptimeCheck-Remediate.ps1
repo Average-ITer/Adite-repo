@@ -34,3 +34,4 @@ if ($uptime.TotalDays -gt $maxUptimeDays) {
 } else {
     Write-Host "Uptime is korter dan $maxUptimeDays dagen. Geen reboot nodig."
 }
+# Gewoon een comment
